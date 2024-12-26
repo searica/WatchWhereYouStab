@@ -14,7 +14,7 @@ namespace VerticalAttacks
         internal const string Author = "Searica";
         public const string PluginName = "WatchWhereYouStab";
         public const string PluginGUID = $"{Author}.Valheim.{PluginName}";
-        public const string PluginVersion = "0.1.0";
+        public const string PluginVersion = "0.1.1";
         
         public static WatchWhereYouStab Instance;
         private const string MainSection = "Global";
@@ -40,7 +40,7 @@ namespace VerticalAttacks
             MaxAngle = Config.BindConfigInOrder(
                 MainSection,
                 "Max Attack Angle",
-                45f,
+                65f,
                 "Max angle you can aim melee attacks up or down by.",
                 new AcceptableValueRange<float>(5f, 90f),
                 synced: false
@@ -75,7 +75,9 @@ namespace VerticalAttacks
 
                 return;
             }
-            __instance.m_maxYAngle = WatchWhereYouStab.Instance.MaxAngle.Value * 2f;
+
+            // Sets max angle limit for RotateTowards method
+            __instance.m_maxYAngle = WatchWhereYouStab.Instance.MaxAngle.Value;
             //__instance.m_attackHeight = 1f;
         }
     }
