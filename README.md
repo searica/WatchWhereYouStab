@@ -19,7 +19,7 @@ My mods will always be free to use but if you feel like saying thanks you can ti
 ## Source Code
 Source code is available on Github.
 
-| Github Repository: | <button style="font-size:20px"><img height="18" src="https://github.githubassets.com/favicons/favicon-dark.svg"></img><a href="https://https://github.com/searica/VerticalAttacks"> Watch Where You Stab</button> |
+| Github Repository: | <button style="font-size:20px"><img height="18" src="https://github.githubassets.com/favicons/favicon-dark.svg"></img><a href="https://https://github.com/searica/WatchWhereYouStab"> Watch Where You Stab</button> |
 |-----------|---------------|
 
 ### Contributions
