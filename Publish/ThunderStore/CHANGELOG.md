@@ -5,6 +5,16 @@
 			<th align="center">Notes</th>
 		</tr>
 		<tr>
+			<td align="center">0.1.1</td>
+			<td align="left">
+				<ul>
+					<li>Adjust default attack angle config setting.</li>
+					<li>Fixed bug that effectively doubled max allowed attack angle.</li>
+					<li>Updated mod icon.</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
 			<td align="center">0.1.0</td>
 			<td align="left">
 				<ul>
