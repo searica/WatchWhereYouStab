@@ -1,11 +1,29 @@
 # Watch Where You Stab
-Client-side mod that lets aim melee attacks up or down up to a maximum angle (configurable).
+Client-side mod that lets aim melee attacks up or down up to a maximum angle (configurable). 
+The configured maximum angle is only applied to attacks that would not normally allow you to attack at that angle. 
+This mod will never reduce the maximum angle of existing attacks.
+
+## Why Use This?
+Because you can configure the maximum allowed angle for melee attacks rather than just uncapping it entirely, you can tune the mod to your preferences.
+
+Due to the in-game camera being positioned above the player character, the camera is often looking downwards and if you fully uncap the allowed angle for 
+melee attacks it is very possible to miss attacks because they went too low, which is also frustrating. By setting the maximum angle for melee attacks to
+45 degrees you can look straight down but you'll still attack at a 45 degree angle forwards and down rather than attacking straight down.
+
+You can also keep the cap very small, say in the range of 5-20 degrees to make it so each weapon still has a different feel and they can't 
+all hit high up or down low while still reducing the frustration caused by being on a slight incline.
+
+If you set the config to 90 degrees though, then `WatchWhereYouStab` is effectively the same as `VerticallyChallenged` or `SlopeCombatFix`.
 
 ## Instructions
-If you are using a mod manager for Thunderstore simply install the mod from there. If you are not using a mod manager then, you need a modded instance of Valheim with BepInEx installed and to put the dll file for this mod into the plugins folder of BepInEx.
+If you are using a mod manager for Thunderstore simply install the mod from there. 
+If you are not using a mod manager then, you need a modded instance of Valheim with BepInEx 
+installed and to put the dll file for this mod into the plugins folder of BepInEx.
 
 ## Configuration
-Changes made to the configuration settings will be reflected in-game immediately (no restart required). The mod also has a built in file watcher so you can edit settings via an in-game configuration manager (changes applied upon closing the in-game configuration manager) or by changing values in the file via a text editor or mod manager.
+Changes made to the configuration settings will be reflected in-game immediately (no restart required). 
+The mod also has a built in file watcher so you can edit settings via an in-game configuration manager 
+(changes applied upon closing the in-game configuration manager) or by changing values in the file via a text editor or mod manager.
 
 ## Known Issues
 None so far, tell me if you find any.

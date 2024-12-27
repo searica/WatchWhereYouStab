@@ -5,6 +5,15 @@
 			<th align="center">Notes</th>
 		</tr>
 		<tr>
+			<td align="center">0.1.2</td>
+			<td align="left">
+				<ul>
+					<li>Updated readme.</li>
+					<li>Prevent ever reducing the maximum melee attack angle.</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
 			<td align="center">0.1.1</td>
 			<td align="left">
 				<ul>

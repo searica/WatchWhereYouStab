@@ -4,6 +4,7 @@ using BepInEx;
 using BepInEx.Configuration;
 using HarmonyLib;
 using System.Reflection;
+using UnityEngine;
 using Logging;
 
 namespace VerticalAttacks
@@ -14,7 +15,7 @@ namespace VerticalAttacks
         internal const string Author = "Searica";
         public const string PluginName = "WatchWhereYouStab";
         public const string PluginGUID = $"{Author}.Valheim.{PluginName}";
-        public const string PluginVersion = "0.1.1";
+        public const string PluginVersion = "0.1.2";
         
         public static WatchWhereYouStab Instance;
         private const string MainSection = "Global";
@@ -41,7 +42,7 @@ namespace VerticalAttacks
                 MainSection,
                 "Max Attack Angle",
                 65f,
-                "Max angle you can aim melee attacks up or down by.",
+                "Angle you can aim melee attacks up or down by. This is only applied to attacks that currently have a smaller maximum angle than the configured value.",
                 new AcceptableValueRange<float>(5f, 90f),
                 synced: false
             );
@@ -77,8 +78,7 @@ namespace VerticalAttacks
             }
 
             // Sets max angle limit for RotateTowards method
-            __instance.m_maxYAngle = WatchWhereYouStab.Instance.MaxAngle.Value;
-            //__instance.m_attackHeight = 1f;
+            __instance.m_maxYAngle = Mathf.Max(__instance.m_maxYAngle, WatchWhereYouStab.Instance.MaxAngle.Value);
         }
     }
 }
