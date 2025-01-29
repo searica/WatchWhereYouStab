@@ -5,6 +5,15 @@
 			<th align="center">Notes</th>
 		</tr>
 		<tr>
+			<td align="center">0.2.0</td>
+			<td align="left">
+				<ul>
+					<li>Added option to fix the height of attack origin.</li>
+					<li>Added an angle correction config to compensate for the camera usually looking slightly down.</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
 			<td align="center">0.1.2</td>
 			<td align="left">
 				<ul>
