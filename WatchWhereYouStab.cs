@@ -90,27 +90,27 @@ namespace VerticalAttacks
     [HarmonyPatch]
     internal static class AttackPatch
     {
-        [HarmonyPrefix]
-        [HarmonyPatch((typeof(Attack)), nameof(Attack.DoMeleeAttack))]
-        private static void DoMeleeAttackPrefix(ref Attack __instance)
-        {
-            if (!Player.m_localPlayer ||
-                !Player.m_localPlayer.TryGetComponent(out Character character) || 
-                __instance.m_character != character)
-            {
+        //[HarmonyPrefix]
+        //[HarmonyPatch((typeof(Attack)), nameof(Attack.DoMeleeAttack))]
+        //private static void DoMeleeAttackPrefix(ref Attack __instance)
+        //{
+        //    if (!Player.m_localPlayer ||
+        //        !Player.m_localPlayer.TryGetComponent(out Character character) || 
+        //        __instance.m_character != character)
+        //    {
 
-                return;
-            }
+        //        return;
+        //    }
 
-            // Sets max angle limit for RotateTowards method
-            __instance.m_maxYAngle = Mathf.Max(__instance.m_maxYAngle, WatchWhereYouStab.Instance.MaxAngle.Value);
+        //    // Sets max angle limit for RotateTowards method
+        //    __instance.m_maxYAngle = Mathf.Max(__instance.m_maxYAngle, WatchWhereYouStab.Instance.MaxAngle.Value);
 
 
-            if (WatchWhereYouStab.Instance.FixedHeight.Value)
-            {
-                __instance.m_attackHeight = 1f;
-            }
-        }
+        //    if (WatchWhereYouStab.Instance.FixedHeight.Value)
+        //    {
+        //        __instance.m_attackHeight = 1f;
+        //    }
+        //}
 
         /// <summary>
         ///     Modify calcuation of the melee attack direction by replacing the call to Attack.GetMeleeAttackDir
@@ -145,8 +145,7 @@ namespace VerticalAttacks
                 .InstructionEnumeration();
         }
 
-        //[Error: Unity Log] InvalidProgramException: Invalid IL code in (wrapper dynamic-method) Attack:DMD<Attack::DoMeleeAttack>(Attack): IL_0018: call      0x00000005
-        
+     
         /// <summary>
         ///     Apply the angle correction if needed.
         /// </summary>
@@ -155,6 +154,23 @@ namespace VerticalAttacks
         /// <param name="attackDir"></param>
         private static void GetMeleeAttackDirection(Attack attack, out Transform originJoint, out Vector3 attackDir)
         {
+            if (!Player.m_localPlayer ||
+               !Player.m_localPlayer.TryGetComponent(out Character character) ||
+               attack.m_character != character)
+            {
+                // Early return with default method if attack if not made by player.
+                attack.GetMeleeAttackDir(out originJoint, out attackDir);
+                return;
+            }
+
+            // Sets max angle limit for RotateTowards method
+            attack.m_maxYAngle = Mathf.Max(attack.m_maxYAngle, WatchWhereYouStab.Instance.MaxAngle.Value);
+
+            if (WatchWhereYouStab.Instance.FixedHeight.Value)
+            {
+                attack.m_attackHeight = 1f;
+            }
+
             originJoint = attack.GetAttackOrigin();
             Vector3 forward = attack.m_character.transform.forward;
             Vector3 aimDir = attack.m_character.GetAimDir(originJoint.position);
