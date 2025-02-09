@@ -6,10 +6,8 @@ using HarmonyLib;
 using System.Reflection;
 using UnityEngine;
 using Logging;
-using System.Collections;
 using System.Collections.Generic;
 using System.Reflection.Emit;
-using System;
 
 namespace VerticalAttacks
 {
@@ -65,7 +63,7 @@ namespace VerticalAttacks
             AngleCorrection = Config.BindConfigInOrder(
                 MainSection,
                 "Angle Correction",
-                0f,
+                10f,
                 "Angle to apply as a correction to your current look direction. This can be used to offset the way the camera is usually pointing downwards. " +
                 "If positive then attacks will be aimed above the current camera direction, if negative they will be aimed below.",
                 new AcceptableValueRange<float>(-30f, 30f),
