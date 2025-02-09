@@ -19,7 +19,7 @@ namespace VerticalAttacks
         internal const string Author = "Searica";
         public const string PluginName = "WatchWhereYouStab";
         public const string PluginGUID = $"{Author}.Valheim.{PluginName}";
-        public const string PluginVersion = "0.1.2";
+        public const string PluginVersion = "0.2.0";
         
         public static WatchWhereYouStab Instance;
         private const string MainSection = "Global";
@@ -165,9 +165,8 @@ namespace VerticalAttacks
 
             // Sets max angle limit for RotateTowards method
             attack.m_maxYAngle = Mathf.Max(attack.m_maxYAngle, WatchWhereYouStab.Instance.MaxAngle.Value);
-
             if (WatchWhereYouStab.Instance.FixedHeight.Value)
-            {
+            { 
                 attack.m_attackHeight = 1f;
             }
 
@@ -178,6 +177,7 @@ namespace VerticalAttacks
             aimDir.z = forward.z;
             aimDir.Normalize();
 
+            // Apply angle correction
             float angleCorrection = WatchWhereYouStab.Instance.AngleCorrection.Value;
             if (angleCorrection != 0f) 
             {
@@ -186,7 +186,6 @@ namespace VerticalAttacks
             }
                         
             attackDir = Vector3.RotateTowards(attack.m_character.transform.forward, aimDir, Mathf.Deg2Rad * attack.m_maxYAngle, 10f);
-            Log.LogInfo("Doing the thing!");
         }
     }
 }
